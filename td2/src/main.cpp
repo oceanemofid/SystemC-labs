@@ -42,15 +42,15 @@ int sc_main(int argc, char* argv[]){
 	df_fork_inst.added_value(added_value_fifo);
 	df_fork_inst.feedback(feedback_fifo);
 	df_fork_inst.result(result_fifo);
-	//when we change 20 to 21 it has 37circles 21 + 16 maximale de fifo par default est 16
-	//when the lien stop it was full and cant write again
 
 	df_display df_display_inst("df_display_inst",20);
 	df_display_inst.result(result_fifo);
-	/* Simulation step */
 
+	/* Simulation step */
 	DISPLAY("START SIMULATION");
-	feedback_fifo.write(3.2);
+	feedback_fifo.write(0);
+	//feedback_fifo.write(3.2);
+	//feedback_fifo.write(5.6);
 	sc_start(300,SC_MS);
 	/* End of Simulation */
 	DISPLAY("END OF SIMULATION");

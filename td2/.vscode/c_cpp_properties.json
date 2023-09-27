@@ -15,8 +15,9 @@
             },
             "includePath": [
                 "${workspaceFolder}/**",
-		        "${env:SYSTEMC_PATH}/src/**",
-                "${env:SYSTEMC_PATH}/include/**"
+                "${env:SYSTEMC_PATH}/src/**",
+                "${env:SYSTEMC_PATH}/include/**",
+                "/home/se5/systemc/systemc/src"
             ],
             "defines": [],
             "cStandard": "c11",

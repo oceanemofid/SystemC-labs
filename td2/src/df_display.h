@@ -9,11 +9,13 @@ SC_MODULE(df_display){
     //IN OUT
     sc_fifo_in<double> result;
     int N;
+    
+    SC_HAS_PROCESS(df_display);
 
-    SC_CTOR(df_display) : result ("result"),
-                          N(16){
-                            SC_THREAD(df_display_thread);
-                        }
+    df_display(sc_module_name name, int N) : sc_module(name), result("result"),N(N)
+    {
+                SC_THREAD(df_display_thread);
+    }
 
 void df_display_thread();
 

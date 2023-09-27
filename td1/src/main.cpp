@@ -41,11 +41,20 @@ int sc_main(int argc, char* argv[]) {
 	user_inst.load(load);
 	user_inst.data_in(data_in);
 
+	sc_trace_file *tf = sc_create_vcd_trace_file("wave");
+	sc_write_comment(tf,"TD1");
+	sc_trace(tf, period, "period");
+	sc_trace(tf, reset, "reset");	
+	sc_trace(tf, up_down, "up_down");	
+	sc_trace(tf, load, "load");	
+	sc_trace(tf, data_in, "data_in");
+	sc_trace(tf, Q, "Q");
+	
 
 	/* Simulation step */
 	DISPLAY("START SIMULATION");
     sc_start(450,SC_NS);
-
+	sc_close_vcd_trace_file(tf);
 	/* End of Simulation */
 	DISPLAY("END OF SIMULATION");
 				

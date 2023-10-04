@@ -46,7 +46,8 @@ SC_MODULE(RTL_memory)
                     DISPLAY("read data "<<buffer[addr->read()]<<" from buffer addr"<<addr->read());
                 }
                 else
-                     DISPLAY("out of range");
+
+                    DISPLAY("out of range");
              
             }
             //write mode

@@ -15,6 +15,8 @@ SC_MODULE(ClkUnit) {
 	int count_tx=0;
 	int count_rx=0;
 
+	const float cyc_tx=4160;
+	const float cyc_rx=260;
 
 	// Constructor
 	SC_CTOR(ClkUnit): sys_clk("sys_clk"),
@@ -24,6 +26,8 @@ SC_MODULE(ClkUnit) {
 		
 		SC_THREAD(ClkUnit_THREAD);
 		sensitive << sys_clk.pos();
+		DISPLAY("cyc_tx="<<cyc_tx);
+		DISPLAY("cyc_rx="<<cyc_rx);
 
 	}
 

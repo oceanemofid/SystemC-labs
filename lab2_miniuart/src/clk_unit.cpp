@@ -2,15 +2,17 @@
 
 void ClkUnit::ClkUnit_THREAD()
 {
+    while(true)
+    {
     wait();
-    if(reset.read())
+    if(reset->read())
     {
         count_tx=0;
         count_rx=0;
     }
     else
     {
-        if(count_tx>=(40000000/9600))
+        if(count_tx>=cyc_tx)
         {
             en_tx.write(true);
             count_tx=0;
@@ -18,10 +20,10 @@ void ClkUnit::ClkUnit_THREAD()
         else
         {
             en_tx.write(false);
-            count_tx++;
+            ++count_tx;
         }
 
-        if(count_rx>=(40000000/153600))
+        if(count_rx>=cyc_rx)
         {
             en_rx.write(true);
             count_rx=0;
@@ -29,8 +31,9 @@ void ClkUnit::ClkUnit_THREAD()
         else
         {
             en_rx.write(false);
-            count_rx++;
+            ++count_rx;
         }
 
+    }
     }
 }

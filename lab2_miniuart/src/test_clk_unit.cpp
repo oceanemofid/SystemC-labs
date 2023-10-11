@@ -28,7 +28,6 @@ void test_clk_unit() {
 	sc_trace(tf,en_rx,"en_rx");
 
 	
-
 	cout << "simulation ..."  << endl;
 
 	for (int i=0; i<5; i++) {

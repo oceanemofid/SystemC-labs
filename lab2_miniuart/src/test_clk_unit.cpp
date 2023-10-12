@@ -9,6 +9,7 @@ void test_clk_unit() {
 	sc_signal<bool> reset;
 	sc_signal<bool> en_tx;
 	sc_signal<bool> en_rx;
+
 	
 	// Declare ClkUnit
 	ClkUnit ClkUnit_inst("ClkUnit");
@@ -16,7 +17,7 @@ void test_clk_unit() {
 			ClkUnit_inst.reset(reset);
 			ClkUnit_inst.en_tx(en_tx);
 			ClkUnit_inst.en_rx(en_rx);
-		
+
 
 	// Trace
 	sc_trace_file *tf = sc_create_vcd_trace_file("wave_clkunit");

@@ -17,7 +17,7 @@ SC_MODULE(TxUnit) {
     sc_out<bool> buf_empty;
     sc_out<bool> txd;
 
-
+	//Data member
 	sc_lv<wordsize> reg;
     sc_lv<wordsize> buf;
 

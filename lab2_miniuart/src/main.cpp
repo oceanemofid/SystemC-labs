@@ -7,7 +7,8 @@
 #define TEST_RTL_TESTBENCH 3
 
 // Change scenario:
-#define TEST TEST_CLK_UNIT
+//#define TEST TEST_CLK_UNIT
+#define TEST TEST_TX_UNIT
 
 int sc_main(int argc, char* argv[]) {
 	sc_set_time_resolution(1, SC_NS);

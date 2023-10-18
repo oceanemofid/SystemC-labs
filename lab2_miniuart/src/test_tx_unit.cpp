@@ -52,6 +52,7 @@ void test_tx_unit() {
     
     //Reset
     DISPLAY("----------Reset----------");
+    load.write(false);
     reset.write(true);
     sc_start(1,SC_US);
     reset.write(false);
@@ -59,27 +60,19 @@ void test_tx_unit() {
 
     //Send data
     DISPLAY("----------Load and Send----------");
-    data_in.write(0x20);
+    data_in.write(0x69);
     load.write(true);
     sc_start(100,SC_NS);
     load.write(false);
-    sc_start(300,SC_NS);
+    sc_start(1100,SC_US);
 
     //Send data
     DISPLAY("----------Load and Send----------");
-    data_in.write(0x30);
-    load.write(true);
-    sc_start(500,SC_NS);
-    load.write(false);
-    sc_start(1000,SC_NS);
-
-    //Send data
-    DISPLAY("----------Load and Send----------");
-    data_in.write(0x45);
+    data_in.write(0x22);
     load.write(true);
     sc_start(100,SC_NS);
     load.write(false);
-    sc_start(1,SC_MS);
+    sc_start(1100,SC_US);
 
 	// CLose Trace
 	sc_close_vcd_trace_file(tf);

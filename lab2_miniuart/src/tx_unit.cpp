@@ -37,10 +37,12 @@ void TxUnit::TxUnit_THREAD(){
                     {   
                         //start transimit
                         txd->write(0);
+                        wait();
                         reg=buf;
                         reg_empty->write(false);
                         buf_empty->write(true);
                         DISPLAY("start transmission : "<<reg);
+                        DISPLAY("start-->"<<txd->read());
                         ++count;
                     }  
                     //if empty
@@ -55,8 +57,9 @@ void TxUnit::TxUnit_THREAD(){
                 {
                     //read data bit by bit
                     txd->write(reg.to_uint() & 1);
+                    wait();
                     reg=reg>>1;
-                    DISPLAY(txd->read());
+                    DISPLAY("bit"<<count-1<<"--> "<<txd->read());
                     count++;
                 }
 
@@ -64,9 +67,10 @@ void TxUnit::TxUnit_THREAD(){
                 {
                     //stop
                     txd->write(1);
+                    wait();
                     reg_empty->write(true);
                     count=0;
-                    DISPLAY(txd->read());
+                    DISPLAY("stop-->"<<txd->read());
                 }
             else
             {

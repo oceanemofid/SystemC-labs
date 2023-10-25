@@ -63,7 +63,7 @@ void test_rx_unit() {
 	sc_trace(tf, data_rdy, "data_rdy");
 
 
-	cout << sc_time_stamp() << ": START SIMULATION" << endl;
+	DISPLAY("START SIMULATION");
 
 	// Reset
 	DISPLAY("----------Reset----------");
@@ -81,10 +81,18 @@ void test_rx_unit() {
 	load.write(true);
 	sc_start(100, SC_NS);
 	load.write(false);
-	sc_start(800, SC_US);
+	//sc_start(800, SC_US);
 	read.write(true);
-	sc_start(25, SC_NS);
+	//sc_start(25, SC_NS);
 	read.write(false);
+	sc_start(1100, SC_US);
+
+
+	DISPLAY("----------Load and Send----------");
+	data_in.write(0xAA); 
+	load.write(true);
+	sc_start(100, SC_NS);
+	load.write(false);
 	sc_start(1100, SC_US);
 
 
@@ -95,9 +103,10 @@ void test_rx_unit() {
 	sc_start(100, SC_NS);
 	read.write(false);
 	load.write(false);
-	sc_start(2100, SC_US);
+	sc_start(1100, SC_US);
 
 
+	
 
 	/*DISPLAY("----------Load and Send----------");
 	data_in.write(0x30); 

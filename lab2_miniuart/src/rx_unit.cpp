@@ -77,7 +77,8 @@ void RxUnit::RxUnit_THREAD()
                             data_rdy->write(rxd->read());
 
                         data_out->write(shift_reg);
-                        cout << "data_out : " << shift_reg << endl;
+                        DISPLAY("data_out : "<<shift_reg);
+                        //cout << "data_out : " << shift_reg << endl;
                         count_bit = 0;
                         count = 0;
                     }
@@ -85,7 +86,8 @@ void RxUnit::RxUnit_THREAD()
 
                 else 
                 {
-                    cout << "count error" << endl;
+                    DISPLAY("count error");
+                    //cout << "count error" << endl;
                     return;
                 }
 
